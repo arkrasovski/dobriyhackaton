@@ -2,9 +2,7 @@ import "./App.css";
 import "./LastSeen.css";
 import "./Recommendations.css";
 import React from "react";
-//import WeeeklyFilms from "./components/weeklyFilms";
-import Map from "./components/Map";
-// import User from "./components/User";
+import Authors from "./components/Authors";
 import logo from "./images/logo.svg";
 import search from "./images/Search.svg";
 import user from "./images/account.svg";
@@ -32,14 +30,19 @@ function App() {
         <header>
           <div className="leftbar">
             <div className="logo">
-              <a> <Link to="/"><img src={logo}></img></Link></a>
+              <a>
+                {" "}
+                <Link to="/">
+                  <img src={logo}></img>
+                </Link>
+              </a>
             </div>
             <ul>
               {/* <li>
                 <Link to="/events/monday">Timetable</Link>
               </li> */}
               <li>
-                <Link to="/map">Map</Link>
+                <Link to="/map">Authors</Link>
               </li>
               {/* <li>
                 <Link to="/recomendations">Recommendations</Link>
@@ -66,19 +69,18 @@ function App() {
               <WeeeklyFilms />
             </Route> */}
 
-            <Route path="/map">
-              <Map />
+            <Route path="/authors">
+              <Authors />
             </Route>
             <Route path="/">
               {/* <User /> */}
-              <Map />
+              <Authors />
             </Route>
 
             <Route path="*">
               <NoMatch />
             </Route>
           </Switch>
-       
         </section>
 
         <footer>

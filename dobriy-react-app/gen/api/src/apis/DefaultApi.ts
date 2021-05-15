@@ -15,12 +15,15 @@
 
 import * as runtime from '../runtime';
 import {
+    Author,
+    AuthorFromJSON,
+    AuthorToJSON,
     ErrorResponse,
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
 } from '../models';
 
-export interface MapRequest {
+export interface AuthorsRequest {
     date?: string;
 }
 
@@ -30,9 +33,9 @@ export interface MapRequest {
 export class DefaultApi extends runtime.BaseAPI {
 
     /**
-     * Returns list of musical city musicevents
+     * Returns list of authors
      */
-    async mapRaw(requestParameters: MapRequest): Promise<runtime.ApiResponse<Array<any>>> {
+    async authorsRaw(requestParameters: AuthorsRequest): Promise<runtime.ApiResponse<Array<Author>>> {
         const queryParameters: any = {};
 
         if (requestParameters.date !== undefined) {
@@ -42,20 +45,20 @@ export class DefaultApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         const response = await this.request({
-            path: `/map`,
+            path: `/authors`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
         });
 
-        return new runtime.JSONApiResponse<any>(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(AuthorFromJSON));
     }
 
     /**
-     * Returns list of musical city musicevents
+     * Returns list of authors
      */
-    async map(requestParameters: MapRequest): Promise<Array<any>> {
-        const response = await this.mapRaw(requestParameters);
+    async authors(requestParameters: AuthorsRequest): Promise<Array<Author>> {
+        const response = await this.authorsRaw(requestParameters);
         return await response.value();
     }
 

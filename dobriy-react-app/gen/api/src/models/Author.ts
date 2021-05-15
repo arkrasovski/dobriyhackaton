@@ -16,60 +16,60 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface ModelMap
+ * @interface Author
  */
-export interface ModelMap {
+export interface Author {
     /**
      * 
      * @type {string}
-     * @memberof ModelMap
+     * @memberof Author
      */
-    name?: string;
+    name: string;
     /**
      * 
      * @type {string}
-     * @memberof ModelMap
+     * @memberof Author
      */
-    title?: string;
+    bio: string;
     /**
      * 
      * @type {string}
-     * @memberof ModelMap
+     * @memberof Author
      */
-    price?: string;
+    portrait: string;
     /**
      * 
      * @type {string}
-     * @memberof ModelMap
+     * @memberof Author
      */
-    sits?: string;
+    country: string;
     /**
      * 
      * @type {string}
-     * @memberof ModelMap
+     * @memberof Author
      */
-    date: string;
+    famous: string;
 }
 
-export function ModelMapFromJSON(json: any): ModelMap {
-    return ModelMapFromJSONTyped(json, false);
+export function AuthorFromJSON(json: any): Author {
+    return AuthorFromJSONTyped(json, false);
 }
 
-export function ModelMapFromJSONTyped(json: any, ignoreDiscriminator: boolean): ModelMap {
+export function AuthorFromJSONTyped(json: any, ignoreDiscriminator: boolean): Author {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
-        'name': !exists(json, 'name') ? undefined : json['name'],
-        'title': !exists(json, 'title') ? undefined : json['title'],
-        'price': !exists(json, 'price') ? undefined : json['price'],
-        'sits': !exists(json, 'sits') ? undefined : json['sits'],
-        'date': json['date'],
+        'name': json['name'],
+        'bio': json['bio'],
+        'portrait': json['portrait'],
+        'country': json['country'],
+        'famous': json['famous'],
     };
 }
 
-export function ModelMapToJSON(value?: ModelMap | null): any {
+export function AuthorToJSON(value?: Author | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -79,10 +79,10 @@ export function ModelMapToJSON(value?: ModelMap | null): any {
     return {
         
         'name': value.name,
-        'title': value.title,
-        'price': value.price,
-        'sits': value.sits,
-        'date': value.date,
+        'bio': value.bio,
+        'portrait': value.portrait,
+        'country': value.country,
+        'famous': value.famous,
     };
 }
 

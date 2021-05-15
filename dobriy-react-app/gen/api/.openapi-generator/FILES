@@ -6,8 +6,8 @@ package.json
 src/apis/DefaultApi.ts
 src/apis/index.ts
 src/index.ts
+src/models/Author.ts
 src/models/ErrorResponse.ts
-src/models/ModelMap.ts
 src/models/index.ts
 src/runtime.ts
 tsconfig.json

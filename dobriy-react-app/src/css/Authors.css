@@ -1,0 +1,82 @@
+.authors-wrapper {
+  width: 100%;
+  color: #000000;
+  background-color: #f2f2f2;
+  margin: 0 auto;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.authors-title {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 48px;
+  line-height: 58px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #2196f3;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.authors-author {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+  justify-content: center;
+}
+
+.authors-image {
+  width: 350px;
+  height: 350px;
+  display: block;
+  border: 1px solid #2196f3;
+  border-radius: 10px;
+}
+
+.authors-description {
+  width: 600px;
+  color: #2196f3;
+  margin-left: 20px;
+}
+
+.authors-name,
+.authors-bio,
+.authors-country,
+.authors-famous,
+.authors-famous-name,
+.authors-bio-about {
+  color: #2196f3;
+}
+
+.authors-name {
+  font-weight: bold;
+  font-size: 26px;
+}
+
+.authors-country {
+  font-style: italic;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.authors-famous {
+  margin-bottom: 20px;
+}
+
+.authors-famous-name {
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+.authors-famous,
+.authors-bio {
+  font-size: 16px;
+}
+
+.authors-bio-about {
+  text-decoration: underline;
+  margin-bottom: 3px;
+  font-size: 18px;
+}
