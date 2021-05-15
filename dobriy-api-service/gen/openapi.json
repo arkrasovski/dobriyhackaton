@@ -45,6 +45,43 @@
       },
       "x-swagger-router-controller" : "events-controller"
     },
+    "/authors" : {
+      "get" : {
+        "description" : "Returns list of authors",
+        "operationId" : "authors",
+        "parameters" : [ {
+          "name" : "date",
+          "in" : "query",
+          "description" : "FIltering date",
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/AuthorsResponse"
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "x-swagger-router-controller" : "authors-controller"
+    },
     "/swagger" : {
       "x-swagger-pipe" : "swagger_raw"
     }
@@ -74,6 +111,33 @@
             "type" : "string"
           },
           "imageId" : {
+            "type" : "string"
+          }
+        }
+      },
+      "AuthorsResponse" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/Author"
+        }
+      },
+      "Author" : {
+        "required" : [ "bio", "country", "famous", "name", "portrait" ],
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string"
+          },
+          "bio" : {
+            "type" : "string"
+          },
+          "portrait" : {
+            "type" : "string"
+          },
+          "country" : {
+            "type" : "string"
+          },
+          "famous" : {
             "type" : "string"
           }
         }

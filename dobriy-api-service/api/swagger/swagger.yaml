@@ -41,6 +41,31 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
+  
+  /authors:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: authors-controller
+    get:
+      description: Returns list of authors
+      # used as the method name of the controller
+      operationId: authors
+      parameters:
+        - name: date
+          in: query
+          description: FIltering date
+          required: false
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/AuthorsResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
 
             
   /swagger:
@@ -67,6 +92,29 @@ definitions:
       imageId: 
         type: string
     
+  AuthorsResponse:
+    type: array
+    items:
+      $ref: "#/definitions/Author"
+
+  Author:
+    required:
+      - name
+      - bio
+      - portrait
+      - country
+      - famous
+    properties:
+      name:
+        type: string
+      bio:
+        type: string
+      portrait:
+        type: string
+      country:
+        type: string
+      famous:
+        type: string
 
     
   ErrorResponse:
@@ -75,5 +123,6 @@ definitions:
     properties:
       message:
         type: string
+
 
 

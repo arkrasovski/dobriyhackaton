@@ -1,6 +1,7 @@
 import "./App.css";
 import React from "react";
-import Events from "./components/EventService";
+import Event from "./components/EventService";
+import Authors from "./components/Authors";
 import search from "./images/Search.svg";
 
 import {
@@ -23,12 +24,16 @@ function App() {
           <div className="leftbar">
             <span><Link to="/">Dobriy museum</Link></span>
             <ul>
-              
-             
+
               <li>
                 <Link to="/events">Events</Link>
               </li>
-              
+
+              <li>
+                <Link to="/authors">Authors</Link>
+              </li>
+
+
             </ul>
           </div>
           <div className="rightbar">
@@ -41,6 +46,9 @@ function App() {
           <Switch>
             <Route path="/events">
               <EventService />
+            </Route>
+            <Route path="/authors">
+              <Authors />
             </Route>
             <Route path="*">
               <NoMatch />

@@ -15,6 +15,9 @@
 
 import * as runtime from '../runtime';
 import {
+    Author,
+    AuthorFromJSON,
+    AuthorToJSON,
     ErrorResponse,
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
@@ -22,6 +25,10 @@ import {
     EventFromJSON,
     EventToJSON,
 } from '../models';
+
+export interface AuthorsRequest {
+    date?: string;
+}
 
 export interface EventsRequest {
     date?: string;
@@ -31,6 +38,36 @@ export interface EventsRequest {
  * 
  */
 export class DefaultApi extends runtime.BaseAPI {
+
+    /**
+     * Returns list of authors
+     */
+    async authorsRaw(requestParameters: AuthorsRequest): Promise<runtime.ApiResponse<Array<Author>>> {
+        const queryParameters: any = {};
+
+        if (requestParameters.date !== undefined) {
+            queryParameters['date'] = requestParameters.date;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/authors`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        });
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(AuthorFromJSON));
+    }
+
+    /**
+     * Returns list of authors
+     */
+    async authors(requestParameters: AuthorsRequest): Promise<Array<Author>> {
+        const response = await this.authorsRaw(requestParameters);
+        return await response.value();
+    }
 
     /**
      * Returns list of musical city musicevents
