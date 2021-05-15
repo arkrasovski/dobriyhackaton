@@ -46,6 +46,10 @@ header {
   align-items: center;
 }
 
+.leftbar__span {
+  margin-right: 85px;
+}
+
 header ul {
   display: flex;
   justify-content: left;

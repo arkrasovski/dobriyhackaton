@@ -22,7 +22,7 @@ function App() {
       <div className="App">
         <header>
           <div className="leftbar">
-            <span><Link to="/exhibition">Dobriy museum</Link></span>
+            <span className="leftbar__span"><Link to="/exhibition">Dobriy museum</Link></span>
             <ul>
 
               <li>
@@ -50,6 +50,9 @@ function App() {
               <Authors />
             </Route>
             <Route path="/exhibition">
+              <Picture />
+            </Route>
+            <Route path="/">
               <Picture />
             </Route>
             <Route path="*">

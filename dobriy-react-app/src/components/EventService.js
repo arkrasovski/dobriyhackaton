@@ -47,8 +47,6 @@ class EventService extends React.Component {
     const id = this.props.match?.params.id || moment().format("YYYY-MM-DD");
     const response = await api.events({ date: id });
     this.setState({ events: response });
-    console.log(this.state.events);
-
   }
 
   render() {
