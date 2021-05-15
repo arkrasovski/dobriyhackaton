@@ -8,10 +8,10 @@
     "url" : "http://localhost:10010/api/v1"
   } ],
   "paths" : {
-    "/map" : {
+    "/authors" : {
       "get" : {
-        "description" : "Returns list of musical city musicevents",
-        "operationId" : "map",
+        "description" : "Returns list of authors",
+        "operationId" : "authors",
         "parameters" : [ {
           "name" : "date",
           "in" : "query",
@@ -26,7 +26,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/MapResponse"
+                  "$ref" : "#/components/schemas/AuthorsResponse"
                 }
               }
             }
@@ -43,7 +43,7 @@
           }
         }
       },
-      "x-swagger-router-controller" : "map-controller"
+      "x-swagger-router-controller" : "authors-controller"
     },
     "/swagger" : {
       "x-swagger-pipe" : "swagger_raw"
@@ -51,29 +51,29 @@
   },
   "components" : {
     "schemas" : {
-      "MapResponse" : {
+      "AuthorsResponse" : {
         "type" : "array",
         "items" : {
-          "$ref" : "#/components/schemas/Map"
+          "$ref" : "#/components/schemas/Author"
         }
       },
-      "Map" : {
-        "required" : [ "date" ],
+      "Author" : {
+        "required" : [ "bio", "country", "famous", "name", "portrait" ],
         "type" : "object",
         "properties" : {
           "name" : {
             "type" : "string"
           },
-          "title" : {
+          "bio" : {
             "type" : "string"
           },
-          "price" : {
+          "portrait" : {
             "type" : "string"
           },
-          "sits" : {
+          "country" : {
             "type" : "string"
           },
-          "date" : {
+          "famous" : {
             "type" : "string"
           }
         }

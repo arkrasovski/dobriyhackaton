@@ -17,13 +17,13 @@ consumes:
 produces:
   - application/json
 paths:
-  /map:
+  /authors:
     # binds a127 app logic to a route
-    x-swagger-router-controller: map-controller
+    x-swagger-router-controller: authors-controller
     get:
-      description: Returns list of musical city musicevents
+      description: Returns list of authors
       # used as the method name of the controller
-      operationId: map
+      operationId: authors
       parameters:
         - name: date
           in: query
@@ -35,7 +35,7 @@ paths:
           description: Success
           schema:
             # a pointer to a definition
-            $ref: "#/definitions/MapResponse"
+            $ref: "#/definitions/AuthorsResponse"
         # responses may fall through to errors
         default:
           description: Error
@@ -47,24 +47,28 @@ paths:
     x-swagger-pipe: swagger_raw
 # complex objects have schema definitions
 definitions:
-  MapResponse:
+  AuthorsResponse:
     type: array
     items:
-      $ref: "#/definitions/Map"
+      $ref: "#/definitions/Author"
 
-  Map:
+  Author:
     required:
-      - date
+      - name
+      - bio
+      - portrait
+      - country
+      - famous
     properties:
       name:
         type: string
-      title:
+      bio:
         type: string
-      price:
+      portrait:
         type: string
-      sits:
+      country:
         type: string
-      date:
+      famous:
         type: string
     
 
