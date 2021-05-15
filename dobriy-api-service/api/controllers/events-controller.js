@@ -25,7 +25,7 @@ var faker = require('faker');
   we specify that in the exports of this module that 'hello' maps to the function named 'hello'
  */
 module.exports = {
-  weeklyevents: getFilmEvents,
+  events: getEvents,
 };
 
 /*
@@ -34,7 +34,7 @@ module.exports = {
   Param 1: a handle to the request object
   Param 2: a handle to the response object
  */
-function getFilmEvents(req, res) {
+function getEvents(req, res) {
   // variables defined in the Swagger document can be referenced using req.swagger.params.{parameter_name}
 
   function todayDate() {
@@ -68,44 +68,25 @@ function getFilmEvents(req, res) {
   // this sends back a JSON response which is a single string
   res.json([
     {
-      "id": '' + faker.random.number(),
       "name": faker.commerce.productName(),
-      "image": faker.image.imageUrl(),
-      "description": faker.lorem.paragraph(),
-      "cinemaLocation": faker.address.streetName() + ' ' + faker.random.number({ 'min': 1, 'max': 200 }),
-      "cinemaName": '' + faker.company.companyName(),
-      "minCost": ' ' + faker.random.number({ 'min': 200, 'max': 400 }),
+      "street": faker.address.streetName() + ' ' + faker.random.number({ 'min': 1, 'max': 200 }),
+      "price": '' + faker.random.number({ 'min': 200, 'max': 400 }),
       "date": date,
+      "imageId": '' + Math.floor(Math.random() * 10 + 2),
     },
     {
-      "id": '',
       "name": faker.commerce.productName(),
-      "image": faker.image.imageUrl(),
-      "description": faker.lorem.paragraph(),
-      "cinemaLocation": faker.address.streetName() + ' ' + faker.random.number({ 'min': 1, 'max': 200 }),
-      "cinemaName": '' + faker.company.companyName(),
-      "minCost": ' ' + faker.random.number({ 'min': 200, 'max': 400 }),
+      "street": faker.address.streetName() + ' ' + faker.random.number({ 'min': 1, 'max': 200 }),
+      "price": '' + faker.random.number({ 'min': 200, 'max': 400 }),
       "date": date,
+      "imageId": '' + Math.floor(Math.random() * 10 + 2),
     },
     {
-      "id": '',
       "name": faker.commerce.productName(),
-      "image": faker.image.imageUrl(),
-      "description": faker.lorem.paragraph(),
-      "cinemaLocation": faker.address.streetName() + ' ' + faker.random.number({ 'min': 1, 'max': 200 }),
-      "cinemaName": '' + faker.company.companyName(),
-      "minCost": ' ' + faker.random.number({ 'min': 200, 'max': 400 }),
+      "street": faker.address.streetName() + ' ' + faker.random.number({ 'min': 1, 'max': 200 }),
+      "price": '' + faker.random.number({ 'min': 200, 'max': 400 }),
       "date": date,
-    },
-    {
-      "id": '',
-      "name": faker.commerce.productName(),
-      "image": faker.image.imageUrl(),
-      "description": faker.lorem.paragraph(),
-      "cinemaLocation": faker.address.streetName() + ' ' + faker.random.number({ 'min': 1, 'max': 200 }),
-      "cinemaName": '' + faker.company.companyName(),
-      "minCost": ' ' + faker.random.number({ 'min': 200, 'max': 400 }),
-      "date": date,
+      "imageId": '' + Math.floor(Math.random() * 10 + 2),
     },
 
   ]);
