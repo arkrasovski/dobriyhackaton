@@ -1,12 +1,12 @@
 swagger: "2.0"
 info:
   version: "0.1.0"
-  title: Film weekly service
+  title: Museum
 # during dev, should point to your local machine
 host: localhost:10010
-# basePath prefixes all resource paths 
+# basePath prefixes all resource paths
 basePath: /api/v1
-# 
+#
 schemes:
   # tip: remove http to make production-grade
   - http
@@ -17,13 +17,13 @@ consumes:
 produces:
   - application/json
 paths:
-  /map:
+  /exhibition:
     # binds a127 app logic to a route
-    x-swagger-router-controller: map-controller
+    x-swagger-router-controller: exhibit-controller
     get:
-      description: Returns list of musical city musicevents
+      description: Returns list of pictures with description of them
       # used as the method name of the controller
-      operationId: map
+      operationId: picture
       parameters:
         - name: date
           in: query
@@ -35,45 +35,42 @@ paths:
           description: Success
           schema:
             # a pointer to a definition
-            $ref: "#/definitions/MapResponse"
+            $ref: "#/definitions/PictureResponse"
         # responses may fall through to errors
         default:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
 
-            
   /swagger:
     x-swagger-pipe: swagger_raw
 # complex objects have schema definitions
 definitions:
-  MapResponse:
+  PictureResponse:
     type: array
     items:
-      $ref: "#/definitions/Map"
+      $ref: "#/definitions/Picture"
 
-  Map:
+  Picture:
     required:
       - date
     properties:
-      name:
-        type: string
       title:
         type: string
-      price:
+      author:
         type: string
-      sits:
+      year:
+        type: string
+      description:
+        type: string
+      picture:
         type: string
       date:
         type: string
-    
 
-    
   ErrorResponse:
     required:
       - message
     properties:
       message:
         type: string
-
-

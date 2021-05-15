@@ -1,17 +1,17 @@
 {
   "openapi" : "3.0.1",
   "info" : {
-    "title" : "Film weekly service",
+    "title" : "Museum",
     "version" : "0.1.0"
   },
   "servers" : [ {
     "url" : "http://localhost:10010/api/v1"
   } ],
   "paths" : {
-    "/map" : {
+    "/exhibition" : {
       "get" : {
-        "description" : "Returns list of musical city musicevents",
-        "operationId" : "map",
+        "description" : "Returns list of pictures with description of them",
+        "operationId" : "picture",
         "parameters" : [ {
           "name" : "date",
           "in" : "query",
@@ -26,7 +26,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/MapResponse"
+                  "$ref" : "#/components/schemas/PictureResponse"
                 }
               }
             }
@@ -43,7 +43,7 @@
           }
         }
       },
-      "x-swagger-router-controller" : "map-controller"
+      "x-swagger-router-controller" : "exhibit-controller"
     },
     "/swagger" : {
       "x-swagger-pipe" : "swagger_raw"
@@ -51,26 +51,26 @@
   },
   "components" : {
     "schemas" : {
-      "MapResponse" : {
+      "PictureResponse" : {
         "type" : "array",
         "items" : {
-          "$ref" : "#/components/schemas/Map"
+          "$ref" : "#/components/schemas/Picture"
         }
       },
-      "Map" : {
+      "Picture" : {
         "required" : [ "date" ],
         "type" : "object",
         "properties" : {
-          "name" : {
-            "type" : "string"
-          },
           "title" : {
             "type" : "string"
           },
-          "price" : {
+          "author" : {
             "type" : "string"
           },
-          "sits" : {
+          "year" : {
+            "type" : "string"
+          },
+          "description" : {
             "type" : "string"
           },
           "date" : {

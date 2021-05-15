@@ -22,7 +22,7 @@ var faker = require("faker");
   we specify that in the exports of this module that 'hello' maps to the function named 'hello'
  */
 module.exports = {
-  user: getUser,
+  picture: getPicture,
 };
 
 /*
@@ -30,7 +30,7 @@ module.exports = {
   Param 1: a handle to the request object
   Param 2: a handle to the response object
  */
-function getUser(req, res) {
+function getPicture(req, res) {
   // variables defined in the Swagger document can be referenced using req.swagger.params.{parameter_name}
   const dateRightNow = new Date();
   let fullDateText = `${dateRightNow.getFullYear()}-${
@@ -48,11 +48,13 @@ function getUser(req, res) {
   // this sends back a JSON response which is a single string
   res.json([
     {
+      title: "" + faker.lorem.words(1),
+      author: "" + faker.name.firstName() + " " + faker.name.lastName(),
+      year: "" + faker.random.number({ min: 1500, max: 2000 }),
+      description: "" + faker.lorem.words(25),
+      picture:
+        "" + "images/" + faker.random.number({ min: 1, max: 20 }) + ".jpg",
       date: date,
-      name: faker.name.firstName(),
-      image: faker.image.imageUrl(),
-      email: faker.internet.email(),
-      phone: ''+ faker.phone.phoneNumber(),
     },
   ]);
 }
