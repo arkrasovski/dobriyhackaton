@@ -1,12 +1,12 @@
 swagger: "2.0"
 info:
   version: "0.1.0"
-  title: Film weekly service
+  title: Museum
 # during dev, should point to your local machine
 host: localhost:10010
-# basePath prefixes all resource paths 
+# basePath prefixes all resource paths
 basePath: /api/v1
-# 
+#
 schemes:
   # tip: remove http to make production-grade
   - http
@@ -21,7 +21,7 @@ paths:
     # binds a127 app logic to a route
     x-swagger-router-controller: events-controller
     get:
-      description: Returns list of musical city musicevents
+      description: Returns list of pictures with description of them
       # used as the method name of the controller
       operationId: events
       parameters:
@@ -41,7 +41,7 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
-  
+
   /authors:
     # binds a127 app logic to a route
     x-swagger-router-controller: authors-controller
@@ -66,7 +66,31 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
-
+            
+  /exhibition:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: exhibit-controller
+    get:
+      description: Returns list of pictures with description of them
+      # used as the method name of the controller
+      operationId: picture
+      parameters:
+        - name: date
+          in: query
+          description: FIltering date
+          required: false
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/PictureResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
             
   /swagger:
     x-swagger-pipe: swagger_raw
@@ -85,13 +109,17 @@ definitions:
         type: string
       street:
         type: string
-      price:
+      author:
+        type: string
+      year:
+        type: string
+      description:
         type: string
       date:
         type: string
-      imageId: 
+      imageId:
         type: string
-    
+
   AuthorsResponse:
     type: array
     items:
@@ -115,8 +143,30 @@ definitions:
         type: string
       famous:
         type: string
+        
+        
+  PictureResponse:
+    type: array
+    items:
+      $ref: "#/definitions/Picture"
 
-    
+  Picture:
+    required:
+      - date
+    properties:
+      title:
+        type: string
+      author:
+        type: string
+      year:
+        type: string
+      description:
+        type: string
+      picture:
+        type: string
+      date:
+        type: string
+
   ErrorResponse:
     required:
       - message

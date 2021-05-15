@@ -16,74 +16,67 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface Event
+ * @interface Picture
  */
-export interface Event {
+export interface Picture {
     /**
      * 
      * @type {string}
-     * @memberof Event
+     * @memberof Picture
      */
-    name?: string;
+    title?: string;
     /**
      * 
      * @type {string}
-     * @memberof Event
-     */
-    street?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Event
+     * @memberof Picture
      */
     author?: string;
     /**
      * 
      * @type {string}
-     * @memberof Event
+     * @memberof Picture
      */
     year?: string;
     /**
      * 
      * @type {string}
-     * @memberof Event
+     * @memberof Picture
      */
     description?: string;
     /**
      * 
      * @type {string}
-     * @memberof Event
+     * @memberof Picture
      */
-    date: string;
+    picture?: string;
     /**
      * 
      * @type {string}
-     * @memberof Event
+     * @memberof Picture
      */
-    imageId?: string;
+    date: string;
 }
 
-export function EventFromJSON(json: any): Event {
-    return EventFromJSONTyped(json, false);
+export function PictureFromJSON(json: any): Picture {
+    return PictureFromJSONTyped(json, false);
 }
 
-export function EventFromJSONTyped(json: any, ignoreDiscriminator: boolean): Event {
+export function PictureFromJSONTyped(json: any, ignoreDiscriminator: boolean): Picture {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
-        'name': !exists(json, 'name') ? undefined : json['name'],
-        'street': !exists(json, 'street') ? undefined : json['street'],
+        'title': !exists(json, 'title') ? undefined : json['title'],
         'author': !exists(json, 'author') ? undefined : json['author'],
         'year': !exists(json, 'year') ? undefined : json['year'],
         'description': !exists(json, 'description') ? undefined : json['description'],
+        'picture': !exists(json, 'picture') ? undefined : json['picture'],
         'date': json['date'],
-        'imageId': !exists(json, 'imageId') ? undefined : json['imageId'],
     };
 }
 
-export function EventToJSON(value?: Event | null): any {
+export function PictureToJSON(value?: Picture | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -92,13 +85,12 @@ export function EventToJSON(value?: Event | null): any {
     }
     return {
         
-        'name': value.name,
-        'street': value.street,
+        'title': value.title,
         'author': value.author,
         'year': value.year,
         'description': value.description,
+        'picture': value.picture,
         'date': value.date,
-        'imageId': value.imageId,
     };
 }
 

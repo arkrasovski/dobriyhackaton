@@ -20,4 +20,7 @@ SwaggerExpress.create(config, function (err, swaggerExpress) {
   app.listen(port);
   console.log("try this:\ncurl http://127.0.0.1:" + port + "/api/v1/events");
   console.log("try this:\ncurl http://127.0.0.1:" + port + "/api/v1/authors");
+  console.log(
+    "try this:\ncurl http://127.0.0.1:" + port + "/api/v1/exhibition"
+  );
 });

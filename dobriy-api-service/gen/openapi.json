@@ -1,7 +1,7 @@
 {
   "openapi" : "3.0.1",
   "info" : {
-    "title" : "Film weekly service",
+    "title" : "Museum",
     "version" : "0.1.0"
   },
   "servers" : [ {
@@ -10,7 +10,7 @@
   "paths" : {
     "/events" : {
       "get" : {
-        "description" : "Returns list of musical city musicevents",
+        "description" : "Returns list of pictures with description of them",
         "operationId" : "events",
         "parameters" : [ {
           "name" : "date",
@@ -82,6 +82,43 @@
       },
       "x-swagger-router-controller" : "authors-controller"
     },
+    "/exhibition" : {
+      "get" : {
+        "description" : "Returns list of pictures with description of them",
+        "operationId" : "picture",
+        "parameters" : [ {
+          "name" : "date",
+          "in" : "query",
+          "description" : "FIltering date",
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/PictureResponse"
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "x-swagger-router-controller" : "exhibit-controller"
+    },
     "/swagger" : {
       "x-swagger-pipe" : "swagger_raw"
     }
@@ -104,7 +141,13 @@
           "street" : {
             "type" : "string"
           },
-          "price" : {
+          "author" : {
+            "type" : "string"
+          },
+          "year" : {
+            "type" : "string"
+          },
+          "description" : {
             "type" : "string"
           },
           "date" : {
@@ -138,6 +181,36 @@
             "type" : "string"
           },
           "famous" : {
+            "type" : "string"
+          }
+        }
+      },
+      "PictureResponse" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/Picture"
+        }
+      },
+      "Picture" : {
+        "required" : [ "date" ],
+        "type" : "object",
+        "properties" : {
+          "title" : {
+            "type" : "string"
+          },
+          "author" : {
+            "type" : "string"
+          },
+          "year" : {
+            "type" : "string"
+          },
+          "description" : {
+            "type" : "string"
+          },
+          "picture" : {
+            "type" : "string"
+          },
+          "date" : {
             "type" : "string"
           }
         }

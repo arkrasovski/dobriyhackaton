@@ -35,17 +35,18 @@
   width: 350px;
   height: 350px;
   display: block;
-  border: 1px solid #2196f3;
-  border-radius: 10px;
+  border-radius: 10px 0 0 10px;
+  border-right: 0;
 }
 
 .authors-description {
   width: 600px;
   color: #2196f3;
-  margin-left: 20px;
+  margin-left: 0;
   background: #fff;
-  border-radius: 10px;
+  border-radius: 0 10px 10px 0;
   padding: 15px;
+  padding-left: 20px;
 }
 
 .authors-name,

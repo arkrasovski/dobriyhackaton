@@ -20,7 +20,6 @@ class Authors extends React.Component {
   render() {
     return (
       <div class="authors-wrapper">
-        <div class="authors-title">Authors</div>
         {this.state.authors.map((author) => (
           <div class="authors-author">
             <img src={author.portrait} class="authors-image"></img>

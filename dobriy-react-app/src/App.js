@@ -3,7 +3,7 @@ import React from "react";
 import Event from "./components/EventService";
 import Authors from "./components/Authors";
 import search from "./images/Search.svg";
-
+import Picture from "./components/Exhibition";
 import {
   BrowserRouter as Router,
   Switch,
@@ -22,7 +22,7 @@ function App() {
       <div className="App">
         <header>
           <div className="leftbar">
-            <span><Link to="/">Dobriy museum</Link></span>
+            <span><Link to="/exhibition">Dobriy museum</Link></span>
             <ul>
 
               <li>
@@ -33,14 +33,13 @@ function App() {
                 <Link to="/authors">Authors</Link>
               </li>
 
-
             </ul>
           </div>
           <div className="rightbar">
             <input type="text"></input>
             <img className="lupa" src={search}></img>
           </div>
-        </header>
+        </header >
 
         <section>
           <Switch>
@@ -50,13 +49,16 @@ function App() {
             <Route path="/authors">
               <Authors />
             </Route>
+            <Route path="/exhibition">
+              <Picture />
+            </Route>
             <Route path="*">
               <NoMatch />
             </Route>
           </Switch>
         </section>
-      </div>
-    </Router>
+      </div >
+    </Router >
   );
 }
 
