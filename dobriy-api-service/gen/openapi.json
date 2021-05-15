@@ -1,0 +1,342 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Film weekly service",
+    "version" : "0.1.0"
+  },
+  "servers" : [ {
+    "url" : "http://localhost:10010/api/v1"
+  } ],
+  "paths" : {
+    "/map" : {
+      "get" : {
+        "description" : "Returns list of musical city musicevents",
+        "operationId" : "map",
+        "parameters" : [ {
+          "name" : "date",
+          "in" : "query",
+          "description" : "FIltering date",
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/MapResponse"
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "x-swagger-router-controller" : "map-controller"
+    },
+    "/weekly" : {
+      "get" : {
+        "description" : "Returns list of cinemas films",
+        "operationId" : "weeklyevents",
+        "parameters" : [ {
+          "name" : "date",
+          "in" : "query",
+          "description" : "Filtering date",
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/FilmsEventsResponce"
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "x-swagger-router-controller" : "weekly-controller"
+    },
+    "/user" : {
+      "get" : {
+        "description" : "Returns list of musical city musicevents",
+        "operationId" : "user",
+        "parameters" : [ {
+          "name" : "date",
+          "in" : "query",
+          "description" : "FIltering date",
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/UserResponse"
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "x-swagger-router-controller" : "user-controller"
+    },
+    "/ratefilm" : {
+      "get" : {
+        "description" : "Returns list of ratefilm decription",
+        "operationId" : "ratefilm",
+        "parameters" : [ {
+          "name" : "date",
+          "in" : "query",
+          "description" : "Filtering date",
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/RateFilmResponse"
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "x-swagger-router-controller" : "ratefilm-controller"
+    },
+    "/recommendations" : {
+      "get" : {
+        "description" : "Returns list of recommendations films",
+        "operationId" : "recommendations",
+        "parameters" : [ {
+          "name" : "date",
+          "in" : "query",
+          "description" : "Filtering date",
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/RecommendationsResponse"
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "x-swagger-router-controller" : "recommendations-controller"
+    },
+    "/swagger" : {
+      "x-swagger-pipe" : "swagger_raw"
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "FilmsEventsResponce" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/FilmEvent"
+        }
+      },
+      "MapResponse" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/Map"
+        }
+      },
+      "UserResponse" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/User"
+        }
+      },
+      "RateFilmResponse" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/Film"
+        }
+      },
+      "RecommendationsResponse" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/Film"
+        }
+      },
+      "FilmEvent" : {
+        "required" : [ "id" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "image" : {
+            "type" : "string"
+          },
+          "description" : {
+            "type" : "string"
+          },
+          "cinemaLocation" : {
+            "type" : "string"
+          },
+          "cinemaName" : {
+            "type" : "string"
+          },
+          "minCost" : {
+            "type" : "string"
+          },
+          "date" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Map" : {
+        "required" : [ "date" ],
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string"
+          },
+          "title" : {
+            "type" : "string"
+          },
+          "price" : {
+            "type" : "string"
+          },
+          "sits" : {
+            "type" : "string"
+          },
+          "date" : {
+            "type" : "string"
+          }
+        }
+      },
+      "User" : {
+        "required" : [ "date" ],
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string"
+          },
+          "email" : {
+            "type" : "string"
+          },
+          "phone" : {
+            "type" : "string"
+          },
+          "image" : {
+            "type" : "string"
+          },
+          "date" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Film" : {
+        "required" : [ "country", "date", "genre", "image", "name", "plot" ],
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string"
+          },
+          "image" : {
+            "type" : "string"
+          },
+          "date" : {
+            "type" : "string"
+          },
+          "genre" : {
+            "type" : "string"
+          },
+          "plot" : {
+            "type" : "string"
+          },
+          "country" : {
+            "type" : "string"
+          },
+          "rating" : {
+            "type" : "string"
+          }
+        }
+      },
+      "ErrorResponse" : {
+        "required" : [ "message" ],
+        "type" : "object",
+        "properties" : {
+          "message" : {
+            "type" : "string"
+          }
+        }
+      }
+    }
+  }
+}
