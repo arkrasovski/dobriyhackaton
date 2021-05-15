@@ -48,6 +48,12 @@ export interface Picture {
      * @type {string}
      * @memberof Picture
      */
+    picture?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Picture
+     */
     date: string;
 }
 
@@ -65,6 +71,7 @@ export function PictureFromJSONTyped(json: any, ignoreDiscriminator: boolean): P
         'author': !exists(json, 'author') ? undefined : json['author'],
         'year': !exists(json, 'year') ? undefined : json['year'],
         'description': !exists(json, 'description') ? undefined : json['description'],
+        'picture': !exists(json, 'picture') ? undefined : json['picture'],
         'date': json['date'],
     };
 }
@@ -82,6 +89,7 @@ export function PictureToJSON(value?: Picture | null): any {
         'author': value.author,
         'year': value.year,
         'description': value.description,
+        'picture': value.picture,
         'date': value.date,
     };
 }

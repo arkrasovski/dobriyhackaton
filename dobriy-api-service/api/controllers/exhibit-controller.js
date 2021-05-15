@@ -56,5 +56,50 @@ function getPicture(req, res) {
         "" + "images/" + faker.random.number({ min: 1, max: 20 }) + ".jpg",
       date: date,
     },
+    {
+      title: "" + faker.lorem.words(1),
+      author: "" + faker.name.firstName() + " " + faker.name.lastName(),
+      year: "" + faker.random.number({ min: 1500, max: 2000 }),
+      description: "" + faker.lorem.words(25),
+      picture:
+        "" + "images/" + faker.random.number({ min: 1, max: 20 }) + ".jpg",
+      date: date,
+    },
+    {
+      title: "" + faker.lorem.words(1),
+      author: "" + faker.name.firstName() + " " + faker.name.lastName(),
+      year: "" + faker.random.number({ min: 1500, max: 2000 }),
+      description: "" + faker.lorem.words(25),
+      picture:
+        "" + "images/" + faker.random.number({ min: 1, max: 20 }) + ".jpg",
+      date: date,
+    },
+    {
+      title: "" + faker.lorem.words(1),
+      author: "" + faker.name.firstName() + " " + faker.name.lastName(),
+      year: "" + faker.random.number({ min: 1500, max: 2000 }),
+      description: "" + faker.lorem.words(25),
+      picture:
+        "" + "images/" + faker.random.number({ min: 1, max: 20 }) + ".jpg",
+      date: date,
+    },
+    {
+      title: "" + faker.lorem.words(1),
+      author: "" + faker.name.firstName() + " " + faker.name.lastName(),
+      year: "" + faker.random.number({ min: 1500, max: 2000 }),
+      description: "" + faker.lorem.words(25),
+      picture:
+        "" + "images/" + faker.random.number({ min: 1, max: 20 }) + ".jpg",
+      date: date,
+    },
+    {
+      title: "" + faker.lorem.words(1),
+      author: "" + faker.name.firstName() + " " + faker.name.lastName(),
+      year: "" + faker.random.number({ min: 1500, max: 2000 }),
+      description: "" + faker.lorem.words(25),
+      picture:
+        "" + "images/" + faker.random.number({ min: 1, max: 20 }) + ".jpg",
+      date: date,
+    },
   ]);
 }

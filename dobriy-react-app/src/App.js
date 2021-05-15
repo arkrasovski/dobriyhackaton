@@ -3,11 +3,7 @@ import "./LastSeen.css";
 import "./Recommendations.css";
 import React from "react";
 //import WeeeklyFilms from "./components/weeklyFilms";
-import Map from "./components/Map";
-// import User from "./components/User";
-import logo from "./images/logo.svg";
-import search from "./images/Search.svg";
-import user from "./images/account.svg";
+import Picture from "./components/Exhibition";
 
 import twitter from "./images/twitter.svg";
 import facebook from "./images/facebook.svg";
@@ -32,14 +28,17 @@ function App() {
         <header>
           <div className="leftbar">
             <div className="logo">
-              <a> <Link to="/"><img src={logo}></img></Link></a>
+              <a>
+                {" "}
+                <Link to="/">{/* <img src={logo}></img> */}</Link>
+              </a>
             </div>
             <ul>
               {/* <li>
                 <Link to="/events/monday">Timetable</Link>
               </li> */}
               <li>
-                <Link to="/map">Map</Link>
+                <Link to="/exhibition">Map</Link>
               </li>
               {/* <li>
                 <Link to="/recomendations">Recommendations</Link>
@@ -48,8 +47,8 @@ function App() {
           </div>
           <div className="rightbar">
             <input placeholder="Find the film..." type="text"></input>
-            <img className="lupa" src={search}></img>
-            <img src={user}></img>
+            {/* <img className="lupa" src={search}></img> */}
+            {/* <img src={user}></img> */}
           </div>
         </header>
 
@@ -58,27 +57,19 @@ function App() {
             <Route path="/about">
               <About />
             </Route>
-            {/* <Route path="/recomendations">
-              <LastSeen />
-              <Recommendations />
-            </Route> */}
-            {/* <Route path="/events/:id">
-              <WeeeklyFilms />
-            </Route> */}
 
-            <Route path="/map">
-              <Map />
+            <Route path="/exhibition">
+              <Picture />
             </Route>
             <Route path="/">
               {/* <User /> */}
-              <Map />
+              <Picture />
             </Route>
 
             <Route path="*">
               <NoMatch />
             </Route>
           </Switch>
-       
         </section>
 
         <footer>

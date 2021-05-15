@@ -73,6 +73,9 @@
           "description" : {
             "type" : "string"
           },
+          "picture" : {
+            "type" : "string"
+          },
           "date" : {
             "type" : "string"
           }
