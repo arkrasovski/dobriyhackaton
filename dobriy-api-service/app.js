@@ -16,9 +16,7 @@ SwaggerExpress.create(config, function (err, swaggerExpress) {
 
   var port = process.env.PORT || 10010;
   app.listen(port);
-
-  if (swaggerExpress.runner.swagger.paths["/map"]) {
-    console.log("try this:\ncurl http://127.0.0.1:" + port + "/api/v1/map");
-  }
+  console.log("\x1b[35m", "Не будь дураком — в app.js в api-service измени строку, допиши твой /someService вместо /recommendations! \n", '\x1b[0m');
+  console.log("try this:\ncurl http://127.0.0.1:" + port + "/api/v1/map");
 
 });
