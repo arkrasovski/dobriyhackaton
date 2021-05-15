@@ -16,60 +16,60 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface ModelMap
+ * @interface Event
  */
-export interface ModelMap {
+export interface Event {
     /**
      * 
      * @type {string}
-     * @memberof ModelMap
+     * @memberof Event
      */
     name?: string;
     /**
      * 
      * @type {string}
-     * @memberof ModelMap
+     * @memberof Event
      */
-    title?: string;
+    street?: string;
     /**
      * 
      * @type {string}
-     * @memberof ModelMap
+     * @memberof Event
      */
     price?: string;
     /**
      * 
      * @type {string}
-     * @memberof ModelMap
+     * @memberof Event
      */
-    sits?: string;
+    date: string;
     /**
      * 
      * @type {string}
-     * @memberof ModelMap
+     * @memberof Event
      */
-    date: string;
+    imageId?: string;
 }
 
-export function ModelMapFromJSON(json: any): ModelMap {
-    return ModelMapFromJSONTyped(json, false);
+export function EventFromJSON(json: any): Event {
+    return EventFromJSONTyped(json, false);
 }
 
-export function ModelMapFromJSONTyped(json: any, ignoreDiscriminator: boolean): ModelMap {
+export function EventFromJSONTyped(json: any, ignoreDiscriminator: boolean): Event {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
         'name': !exists(json, 'name') ? undefined : json['name'],
-        'title': !exists(json, 'title') ? undefined : json['title'],
+        'street': !exists(json, 'street') ? undefined : json['street'],
         'price': !exists(json, 'price') ? undefined : json['price'],
-        'sits': !exists(json, 'sits') ? undefined : json['sits'],
         'date': json['date'],
+        'imageId': !exists(json, 'imageId') ? undefined : json['imageId'],
     };
 }
 
-export function ModelMapToJSON(value?: ModelMap | null): any {
+export function EventToJSON(value?: Event | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -79,10 +79,10 @@ export function ModelMapToJSON(value?: ModelMap | null): any {
     return {
         
         'name': value.name,
-        'title': value.title,
+        'street': value.street,
         'price': value.price,
-        'sits': value.sits,
         'date': value.date,
+        'imageId': value.imageId,
     };
 }
 

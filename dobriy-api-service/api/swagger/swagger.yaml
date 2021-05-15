@@ -17,13 +17,13 @@ consumes:
 produces:
   - application/json
 paths:
-  /map:
+  /events:
     # binds a127 app logic to a route
-    x-swagger-router-controller: map-controller
+    x-swagger-router-controller: events-controller
     get:
       description: Returns list of musical city musicevents
       # used as the method name of the controller
-      operationId: map
+      operationId: events
       parameters:
         - name: date
           in: query
@@ -35,7 +35,7 @@ paths:
           description: Success
           schema:
             # a pointer to a definition
-            $ref: "#/definitions/MapResponse"
+            $ref: "#/definitions/EventsResponse"
         # responses may fall through to errors
         default:
           description: Error
@@ -47,24 +47,24 @@ paths:
     x-swagger-pipe: swagger_raw
 # complex objects have schema definitions
 definitions:
-  MapResponse:
+  EventsResponse:
     type: array
     items:
-      $ref: "#/definitions/Map"
+      $ref: "#/definitions/Event"
 
-  Map:
+  Event:
     required:
       - date
     properties:
       name:
         type: string
-      title:
+      street:
         type: string
       price:
         type: string
-      sits:
-        type: string
       date:
+        type: string
+      imageId: 
         type: string
     
 

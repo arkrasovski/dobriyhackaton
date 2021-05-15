@@ -1,6 +1,6 @@
 import "./App.css";
 import React from "react";
-import Map from "./components/Map";
+import Events from "./components/EventService";
 import search from "./images/Search.svg";
 
 import {
@@ -13,6 +13,7 @@ import {
 } from "react-router-dom";
 
 import moment from "moment";
+import EventService from "./components/EventService";
 
 function App() {
   return (
@@ -23,15 +24,11 @@ function App() {
             <span><Link to="/">Dobriy museum</Link></span>
             <ul>
               
-              {/* <li>
-                <Link to="/events/monday">Timetable</Link>
-              </li> */}
+             
               <li>
-                <Link to="/map">Map</Link>
+                <Link to="/events">Events</Link>
               </li>
-              {/* <li>
-                <Link to="/recomendations">Recommendations</Link>
-              </li> */}
+              
             </ul>
           </div>
           <div className="rightbar">
@@ -42,32 +39,14 @@ function App() {
 
         <section>
           <Switch>
-            <Route path="/about">
-              <About />
+            <Route path="/events">
+              <EventService />
             </Route>
-            {/* <Route path="/recomendations">
-              <LastSeen />
-              <Recommendations />
-            </Route> */}
-            {/* <Route path="/events/:id">
-              <WeeeklyFilms />
-            </Route> */}
-
-            <Route path="/map">
-              <Map />
-            </Route>
-            <Route path="/">
-              {/* <User /> */}
-              <Map />
-            </Route>
-
             <Route path="*">
               <NoMatch />
             </Route>
           </Switch>
-       
         </section>
-
       </div>
     </Router>
   );

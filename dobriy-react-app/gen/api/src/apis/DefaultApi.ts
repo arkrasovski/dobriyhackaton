@@ -18,9 +18,12 @@ import {
     ErrorResponse,
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
+    Event,
+    EventFromJSON,
+    EventToJSON,
 } from '../models';
 
-export interface MapRequest {
+export interface EventsRequest {
     date?: string;
 }
 
@@ -32,7 +35,7 @@ export class DefaultApi extends runtime.BaseAPI {
     /**
      * Returns list of musical city musicevents
      */
-    async mapRaw(requestParameters: MapRequest): Promise<runtime.ApiResponse<Array<any>>> {
+    async eventsRaw(requestParameters: EventsRequest): Promise<runtime.ApiResponse<Array<Event>>> {
         const queryParameters: any = {};
 
         if (requestParameters.date !== undefined) {
@@ -42,20 +45,20 @@ export class DefaultApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         const response = await this.request({
-            path: `/map`,
+            path: `/events`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
         });
 
-        return new runtime.JSONApiResponse<any>(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(EventFromJSON));
     }
 
     /**
      * Returns list of musical city musicevents
      */
-    async map(requestParameters: MapRequest): Promise<Array<any>> {
-        const response = await this.mapRaw(requestParameters);
+    async events(requestParameters: EventsRequest): Promise<Array<Event>> {
+        const response = await this.eventsRaw(requestParameters);
         return await response.value();
     }
 
